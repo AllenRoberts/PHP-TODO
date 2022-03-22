@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.new-task{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.new-task input,
+.new-task textarea,
+.new-task button{
+    font-family: Arial;
+    padding: 5px 10px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.tasks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.task {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    width: 300px;
+    display: inline-block;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    min-height: 100px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.task .title{
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.task .title a {
+    color: black;
+}
+
+.task .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: transparent;
+    border: none;
+}
+.task small {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin-top: 10px;
+    display: block;
+    text-align: right;
+    font-style: italic;
+}
