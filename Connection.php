@@ -5,6 +5,9 @@ class Connection
 {
     public PDO $pdo;
 
+    /*
+    Makes initial connection to database
+    */
     public function __construct()
     {
         try{
@@ -16,6 +19,9 @@ class Connection
     }
 }
 
+    /*
+    Gets all tasks by the date they were added
+    */
     public function getTasks()
     {
         $statement = $this->pdo->prepare("SELECT * from todo order by date_added DESC");
@@ -23,6 +29,9 @@ class Connection
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /*
+    Takes inputted data and adds it to database
+    */
     public function addTask($task){
         $statement = $this->pdo->prepare("INSERT INTO todo (title, task_description, date_added) VALUES (:title, :task_description, :date)");
         $statement->bindValue(':title', $task['title']);
@@ -33,6 +42,9 @@ class Connection
 
     }
 
+    /*
+    Takes new data and updates task by ID
+    */
     public function updateTask($id, $task)
     {
         $statement = $this->pdo->prepare("UPDATE todo SET title = :title, task_description = :task_description WHERE id = :id");
@@ -42,6 +54,9 @@ class Connection
         return $statement->execute();
     }
 
+    /*
+    Gets task data by ID
+    */
     public function getTaskById($id)
     {
         $statement = $this->pdo->prepare("SELECT * from todo where id = :id");
@@ -50,6 +65,9 @@ class Connection
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
+    /*
+    Removes task data by ID
+    */
     public function removeTask($id){
         $statement = $this->pdo->prepare("DELETE from todo where id = :id");
         $statement->bindValue('id', $id);
